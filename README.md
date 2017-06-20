@@ -6,3 +6,4 @@
 - git status 查看状态
 - git add --all 添加所有文件
 - git commit -m "注释内容" 	提交文件到本地仓库
+- git push 推送到远端仓库

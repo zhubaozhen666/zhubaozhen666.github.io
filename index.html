@@ -1,11 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>第一次</title>
-</head>
-<body>
-	<h1>Hello GitHub!</h1>
-</body>
-</html>
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>点名器</title>
+		<style>
+			tr{
+				/*设置tr的高度为50像素*/
+				height:50px;
+			}
+			td{
+				/*设置每个td的宽度为100像素*/
+				width:100px;
+			}
+			.yes{
+				background:yellow;
+			}
 
+			.btn{
+				width:100px;
+				height:50px;
+				background:#3385FF;
+				color:white;
+				font-size:20px;
+				border:0;
+				/*将鼠标指针的样式设置为小手手*/
+				cursor:pointer;
+			}
+			/*当鼠标放到.btn元素身上的时候，改变.btn的背景颜色*/
+			.btn:hover{
+				background:#3385aa;
+			}
+
+			.green{
+				background:green;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<table width="100%" border="1" cellspacing="0">
+			<!-- 1 -->
+			<tr align="center">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td rowspan="6">过道</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<!-- 2 -->
+			<tr align="center">
+				<td></td>
+				<td></td>
+				<td class="yes">杨佳鑫</td>
+				<td class="yes">李浩杰</td>
+
+				<td class="yes">庄境坚</td>
+				<td class="yes">黄越宁</td>
+				<td class="yes">李梓远</td>
+				<td class="yes">梁浩扬</td>
+				<td></td>
+			</tr>
+			<!-- 3 -->
+			<tr align="center">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+
+				<td class="yes">吴威</td>
+				<td class="yes">陈鑫</td>
+				<td class="yes">黎子聪</td>
+				<td></td>
+				<td class="yes">王龙</td>
+			</tr>
+			<!-- 4 -->
+			<tr align="center">
+				<td></td>
+				<td class="yes">陈嘉宝</td>
+				<td class="yes">房灵杰</td>
+				<td class="yes">骆奇彬</td>
+
+				<td class="yes">伍铸成</td>
+				<td class="yes">王剑</td>
+				<td class="yes">陈金惠</td>
+				<td class="yes">王超</td>
+				<td class="yes">陈毅文</td>
+			</tr>
+			<!-- 5 -->
+			<tr align="center">
+				<td></td>
+				<td class="yes">杨小清</td>
+				<td class="yes">苏景发</td>
+				<td class="yes">刘爱民</td>
+
+				<td class="yes">陈伟</td>
+				<td class="yes">车金胜</td>
+				<td class="yes">申冠熙</td>
+				<td class="yes">胡灿彬</td>
+				<td></td>
+			</tr>
+			<!-- 6 -->
+			<tr align="center">
+				<td></td>
+				<td></td>
+				<td class="yes">温陆宇</td>
+				<td class="yes">张业宇</td>
+
+				<td class="yes">朱报镇</td>
+				<td class="yes">杨振雄</td>
+				<td class="yes">李子轩</td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<center>
+			<img id="pic" src="./img/2.jpg" height="200" />
+			<br>
+			<br>
+			<button id="btn" class="btn" onclick="start()">开 始</button>
+		</center>
+	</body>
+</html>
+<script>
+	//找对象
+	var pic = document.getElementById('pic');
+	var btn = document.getElementById('btn');
+	var stu = document.getElementsByClassName('yes');
+	console.dir(stu);
+	// alert(stu.length);
+	var timer;	//用于保存定时器
+
+	function start()
+	{
+		// alert(btn.innerHTML);
+		if (btn.innerHTML == '开 始') {
+			btn.innerHTML = '暂 停';
+			timer = setInterval(function(){
+				//生成随机数0~10（不包含10）
+				var num = Math.floor(Math.random() * 10);
+				pic.src = './img/'+num+'.jpg';
+			}, 100);
+		} else {
+			btn.innerHTML = '开 始';
+			clearInterval(timer);
+			//产生随机数0~在座同学的位数
+			var num = Math.floor(Math.random() * stu.length);
+			//将随机一位同学变绿
+			stu[num].setAttribute('class', 'green');
+		}
+	}
+</script>
